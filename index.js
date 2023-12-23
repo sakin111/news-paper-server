@@ -29,11 +29,18 @@ async function run() {
 const trendCollection = client.db("finalOne").collection("trend");
 
 const addCollection = client.db("newsOne").collection("news");
-const userCollection = client.db("userOne").collection("users")
+const userCollection = client.db("userOne").collection("users");
+const firstCollection = client.db("trendFirst").collection("firstOne")
 
 
 app.get("/trend", async (req,res) =>{
   const result = await trendCollection.find().toArray();
+  res.send(result)
+})
+
+
+app.get("/first", async(req,res) =>{
+  const result = await firstCollection.find().toArray();
   res.send(result)
 })
 
@@ -64,6 +71,11 @@ const item = req.body
 const result = await addCollection.insertOne(item)
 res.send(result)
 
+})
+
+app.get("/add",async(req,res) =>{
+  const result = await addCollection.find().toArray()
+  res.send(result);
 })
 
 
