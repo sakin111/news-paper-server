@@ -274,7 +274,7 @@ async function run() {
     // comment
     app.post("/comment", async (req, res) => {
       try {
-        const item = req.body;
+        const item = req.body;nod
         const result = await commentCollection.insertOne(item);
         res.status(200).json({ message: 'Comment inserted successfully', result });
       } catch (error) {
